@@ -1,49 +1,31 @@
-package MIDTERM;
+package midterm;
 
 import java.util.Scanner;
 
 public class basic_calculator {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Basic Calculator");
+        Scanner sc = new Scanner(System.in);
+        boolean u = true;
+        while (u){
+            
         System.out.print("Enter first number: ");
-        double num1 = scanner.nextDouble();
+        double num1 = sc.nextDouble();
 
-        System.out.print("Enter an operator (+, -, *, /): ");
-        char operator = scanner.next().charAt(0);
+        System.out.print("Enter operator (+, -, *, /): ");
+        char op = sc.next().charAt(0);
 
         System.out.print("Enter second number: ");
-        double num2 = scanner.nextDouble();
+        double num2 = sc.nextDouble();
 
-        double result;
+        double result = 0;
 
-        switch (operator) {
-            case '+':
-                result = num1 + num2;
-                System.out.println("Result: " + result);
-                break;
-            case '-':
-                result = num1 - num2;
-                System.out.println("Result: " + result);
-                break;
-            case '*':
-                result = num1 * num2;
-                System.out.println("Result: " + result);
-                break;
-            case '/':
-                if (num2 != 0) {
-                    result = num1 / num2;
-                    System.out.println("Result: " + result);
-                } else {
-                    System.out.println("Error: Division by zero is not allowed.");
-                }
-                break;
-            default:
-                System.out.println("Invalid operator.");
-                break;
+        if (op == '+') result = num1 + num2;
+        else if (op == '-') result = num1 - num2;
+        else if (op == '*') result = num1 * num2;
+        else if (op == '/') result = num2 != 0 ? num1 / num2 : Double.NaN;
+        else System.out.println("Invalid operator!");
+
+        System.out.println("Result: " + result);
         }
-
-        scanner.close();
     }
 }
